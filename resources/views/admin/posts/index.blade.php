@@ -2,6 +2,21 @@
 
 @section('content')
 
+    @if(Session::has('deleted_post'))
+
+        <p class="alert alert-danger text-center">{{session('deleted_post')}}</p>
+    @endif
+
+    @if(Session::has('updated_post'))
+
+        <p class="alert alert-info text-center">{{session('updated_post')}}</p>
+    @endif
+
+    @if(Session::has('created_post'))
+
+        <p class="alert alert-success text-center">{{session('created_post')}}</p>
+    @endif
+
     <h1>Posts</h1>
 
     <table class="table">
@@ -27,10 +42,11 @@
                         <img height="50"
                              src="{{url($post->photo ? $post->photo->file : 'http://placehold.it/400x400')}}"
                              alt="{{$post->title . ' image'}}"></td>
-                    <td>{{$post->user->name}}</td>
+                    <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
                     <td>{{$post->category ? $post->category->name : 'UnCategorized'}}</td>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->body}}</td>
+                    {{-- Go to Larvel Helpers for more methods --}}
+                    <td>{{str_limit($post->body, 25)}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                 </tr>
