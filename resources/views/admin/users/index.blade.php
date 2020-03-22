@@ -1,6 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
+
+    @if(Session::has('deleted_user'))
+
+        <p class="alert alert-danger text-center">{{session('deleted_user')}}</p>
+    @endif
+
+    @if(Session::has('updated_user'))
+
+        <p class="alert alert-info text-center">{{session('updated_user')}}</p>
+    @endif
+
+    @if(Session::has('created_user'))
+
+        <p class="alert alert-success text-center">{{session('created_user')}}</p>
+    @endif
+
     <h1>Users</h1>
     <table class="table">
         <thead>
@@ -21,7 +37,8 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td><img height="50" width="60" src="{{asset($user->photo ? $user->photo->file : 'http://placehold.it/400x400')}}"
+                    <td><img height="50" width="60"
+                             src="{{asset($user->photo ? $user->photo->file : 'http://placehold.it/400x400')}}"
                              alt="Photo not available">
                     </td>
                     <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
