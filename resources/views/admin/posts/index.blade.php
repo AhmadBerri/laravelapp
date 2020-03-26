@@ -49,7 +49,7 @@
                     <td>{{$post->title}}</td>
                     {{-- Go to Larvel Helpers for more methods --}}
                     <td>{{str_limit($post->body, 25)}}</td>
-                    <td><a href="{{route('home.post', $post->id)}}">View Post</a></td>
+                    <td><a href="{{route('home.post', $post->slug)}}">View Post</a></td>
                     <td><a href="{{route('admin.comments.show', $post->id)}}">View Comments</a></td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
@@ -58,5 +58,13 @@
         @endif
         </tbody>
     </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+
+            {{$posts->render()}}
+
+        </div>
+    </div>
 
 @endsection
