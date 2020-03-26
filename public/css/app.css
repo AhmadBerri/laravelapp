@@ -4,4 +4,10 @@
 .alert {
   margin-top: 15px; }
 
+#nested-comment {
+  margin-top: 15px; }
+
+.comment-reply {
+  display: none; }
+
 /*# sourceMappingURL=app.css.map */

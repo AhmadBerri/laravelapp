@@ -122,4 +122,12 @@ class AdminPostsController extends Controller
         Session::flash('deleted_post', 'Post has been deleted.');
         return redirect(route('admin.posts.index'));
     }
+
+    public function post($id)
+    {
+        $post = Post::findOrFail($id);
+        $comments = $post->comments()->whereIsActive(1)->get();
+        return view('post', compact('post', 'comments'));
+    }
+
 }
