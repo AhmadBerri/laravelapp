@@ -24,10 +24,10 @@ class PostsCreateRequest extends Request
     public function rules()
     {
         return [
-//            'title' => 'required',
-//            'category' => 'required',
-//            'photo' => 'required',
-//            'body' => 'required'
+            'title' => 'required',
+            'category' => 'required',
+            'photo' => 'required',
+            'body' => 'required'
         ];
     }
 }
