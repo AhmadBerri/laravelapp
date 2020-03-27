@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@include('includes.tinyeditor')
+
 @section('content')
 
     <h1>Edit Post</h1>
@@ -8,7 +10,7 @@
 
         <div class="col-sm-3">
 
-            <img src="{{asset($post->photo->file)}}" alt="{{$post->title . ' image'}}" class="img-responsive">
+            <img src="{{asset($post->photo ? $post->photo->file : $post->photoPlaceholder())}}" alt="{{$post->title . ' image'}}" class="img-responsive">
 
         </div>
 

@@ -20,13 +20,14 @@
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-responsive" src="{{asset($post->photo->file)}}" alt="">
+    <img class="img-responsive" src="{{asset($post->photo ? $post->photo->file : $post->photoPlaceholder())}}"
+         alt="">
 
     <hr>
 
     <!-- Post Content -->
 
-    <p>{{$post->body}}</p>
+    <p>{!! $post->body !!}</p>
 
     <hr>
 
