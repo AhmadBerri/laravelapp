@@ -36,7 +36,25 @@ class AdminMediaController extends Controller
         unlink(public_path() . $photo->file);
         $photo->delete();
         Session::flash('deleted_photo', 'Photo has been deleted.');
-        return redirect(route('admin.media.index'));
+
+    }
+
+    public function deleteMedia(Request $request)
+    {
+//        if (isset($request->delete_single)) {
+//            $this->destroy($request->photo);
+//            return redirect()->back();
+//        }
+
+        if (isset($request->delete_all) && !empty($request->checkBoxArray)) {
+            $photos = Photo::findOrFail($request->checkBoxArray);
+            foreach ($photos as $photo) {
+                $photo->delete();
+            }
+            Session::flash('deleted_photos', 'Photos have been deleted.');
+            return redirect()->back();
+        }
+        return redirect()->back();
     }
 
 }
