@@ -31,6 +31,31 @@
 
     <hr>
 
+    {{--    This disqus system for comments and replies --}}
+
+    {{--    <div id="disqus_thread"></div>--}}
+    {{--    <script>--}}
+
+    {{--        /**--}}
+    {{--         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.--}}
+    {{--         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/--}}
+    {{--        /*--}}
+    {{--        var disqus_config = function () {--}}
+    {{--        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable--}}
+    {{--        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable--}}
+    {{--        };--}}
+    {{--        */--}}
+    {{--        (function () { // DON'T EDIT BELOW THIS LINE--}}
+    {{--            var d = document, s = d.createElement('script');--}}
+    {{--            s.src = 'https://laravelapp-4.disqus.com/embed.js';--}}
+    {{--            s.setAttribute('data-timestamp', +new Date());--}}
+    {{--            (d.head || d.body).appendChild(s);--}}
+    {{--        })();--}}
+    {{--    </script>--}}
+    {{--    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by--}}
+    {{--            Disqus.</a></noscript>--}}
+    {{--    <script id="dsq-count-scr" src="//laravelapp-4.disqus.com/count.js" async></script>--}}
+
     @if(Session::has('comment_message'))
 
         <p class="alert alert-success text-center">{{session('comment_message')}}</p>
@@ -74,7 +99,7 @@
         @foreach($comments as $comment)
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img height="64" class="media-object" src="{{Auth::user()->gravatar}}{{--asset($comment->photo)--}}"
+                    <img height="64" class="media-object" src="{{Auth::user()->gravatar}}asset($comment->photo)"
                          alt="">
                 </a>
                 <div class="media-body">
