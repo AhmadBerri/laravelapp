@@ -52,14 +52,12 @@
                     <td><img height="50" src="{{asset($photo->file)}}" alt=""></td>
                     <td>{{$photo->created_at ? $photo->created_at->diffForHumans() : 'No date'}}</td>
                     <td>{{$photo->updated_at ? $photo->updated_at->diffForHumans() : 'No date'}}</td>
-{{--                    <td>--}}
-
-{{--                        <input type="hidden" name="photo" value="{{$photo->id}}">--}}
-{{--                        <div class="group-form">--}}
-{{--                            <input type="submit" name="delete_single" value="Delete" class="btn btn-danger">--}}
-{{--                        </div>--}}
-
-{{--                    </td>--}}
+                    {{--<td>--}}
+                    {{--<input type="hidden" name="photo" value="{{$photo->id}}">--}}
+                    {{--<div class="group-form">--}}
+                    {{--<input type="submit" name="delete_single" value="Delete" class="btn btn-danger">--}}
+                    {{--</div>--}}
+                    {{--</td>--}}
                 </tr>
             @endforeach
 
