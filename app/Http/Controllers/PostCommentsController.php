@@ -46,7 +46,7 @@ class PostCommentsController extends Controller
             'post_id' => $request->post_id,
             'author' => $user->name,
             'email' => $user->email,
-            'photo' => $user->photo->file,
+            'photo' => $user->photo ? $user->photo->file : "http://placehold.it/700x200",
             'body' => $request->body
         ];
         Comment::create($data);
@@ -65,7 +65,7 @@ class PostCommentsController extends Controller
     {
         $post = Post::findOrFail($id);
         $comments = $post->comments;
-        return view('admin.comments.show' , compact('comments'));
+        return view('admin.comments.show', compact('comments'));
     }
 
     /**

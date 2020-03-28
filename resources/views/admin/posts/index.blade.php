@@ -24,10 +24,9 @@
         <tr>
             <th>Id</th>
             <th>Photo</th>
+            <th>Title</th>
             <th>Owner</th>
             <th>Category</th>
-            <th>Title</th>
-            <th>Body</th>
             <th>Post</th>
             <th>Comments</th>
             <th>Created At</th>
@@ -44,11 +43,10 @@
                         <img height="50"
                              src="{{url($post->photo ? $post->photo->file : 'http://placehold.it/400x400')}}"
                              alt="{{$post->title . ' image'}}"></td>
-                    <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
+                    <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
+                    <td>{{$post->user->name}}</td>
                     <td>{{$post->category ? $post->category->name : 'UnCategorized'}}</td>
-                    <td>{{$post->title}}</td>
                     {{-- Go to Larvel Helpers for more methods --}}
-                    <td>{{str_limit($post->body, 25)}}</td>
                     <td><a href="{{route('home.post', $post->slug)}}">View Post</a></td>
                     <td><a href="{{route('admin.comments.show', $post->id)}}">View Comments</a></td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
